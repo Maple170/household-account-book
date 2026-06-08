@@ -1,17 +1,54 @@
-# household_account_book
+# 家計簿アプリ
 
-A new Flutter project.
+シンプルで使いやすい家計簿 iOS アプリです。収支の記録・集計・グラフ表示を一括管理できます。
 
-## Getting Started
+## スクリーンショット
 
-This project is a starting point for a Flutter application.
+<!-- スクリーンショットをここに追加 -->
 
-A few resources to get you started if this is your first Flutter project:
+## 機能
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+- **収支の記録** — 収入・支出をカテゴリ付きで登録
+- **一覧表示** — 月別・カテゴリ別に取引履歴を確認
+- **グラフ表示** — 支出の内訳を円グラフ・棒グラフで可視化
+- **ローカル保存** — オフラインでも動作するデバイス内 DB
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 技術スタック
+
+| カテゴリ | 使用技術 |
+|---|---|
+| フレームワーク | Flutter 3.x (Dart) |
+| 状態管理 | Provider |
+| データベース | SQLite (sqflite) |
+| グラフ描画 | fl_chart |
+| ID生成 | uuid |
+
+## アーキテクチャ
+
+```
+lib/
+├── main.dart
+├── models/          # データモデル（Transaction）
+├── providers/       # 状態管理（TransactionProvider）
+├── database/        # DB操作ヘルパー
+├── screens/         # 各画面（ホーム・追加・グラフ）
+└── constants/       # カテゴリ定義
+```
+
+Provider を用いた MVVM ライクな構成で、UI とビジネスロジックを分離しています。
+
+## セットアップ
+
+```bash
+# 依存関係のインストール
+flutter pub get
+
+# 実行（iOS シミュレータ or 実機）
+flutter run
+```
+
+**動作環境:** iOS 12 以上 / Flutter 3.x / Dart 3.x
+
+## 開発の背景
+
+日常的に使える実用的なアプリを自分で作りたいという動機から開発しました。シンプルな CRUD 操作にとどまらず、グラフによるデータ可視化や Provider による状態管理の設計に特に力を入れています。
